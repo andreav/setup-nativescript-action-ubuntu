@@ -4,7 +4,7 @@ inputs:
   platform:
     description: 'ubuntu or macos'
     required: true
-    default: 'android'
+    default: 'ubuntu'
 outputs:
   success:
     description: 'Success or not'
