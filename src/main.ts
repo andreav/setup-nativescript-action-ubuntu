@@ -15,17 +15,18 @@ async function run(): Promise<void> {
       await exec('/bin/bash', ['-c', 'whoami'])
 
       await exec('/bin/bash', ['-c', 'sudo npm install -g nativescript'])
-      
-      await exec('/bin/bash', ['-c', 'npm install'])
-      
-      await exec('/bin/bash', ['-c', 'tns doctor'])
 
+      await exec('/bin/bash', ['-c', 'npm install'])
+
+      await exec('/bin/bash', ['-c', 'tns doctor'])
     } else if (platform === 'macos') {
-      throw 'platform macos WIP'
+      throw Error('platform macos WIP')
     } else {
-      throw 'platform ${platform} not allowed. Only "ubutnu" or "macos" are supported'
+      throw Error(
+        `platform ${platform} not allowed. Only "ubuntu" or "macos" are supported`
+      )
     }
-    core.setOutput('success', '1')
+    core.setOutput('success', '0')
   } catch (error) {
     core.setFailed(error.message)
   }
