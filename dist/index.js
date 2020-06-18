@@ -984,6 +984,7 @@ var __importStar = (this && this.__importStar) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const core = __importStar(__webpack_require__(470));
+// import {wait} from './wait'
 const exec_1 = __webpack_require__(986);
 function run() {
     return __awaiter(this, void 0, void 0, function* () {
@@ -995,16 +996,17 @@ function run() {
             // core.debug(new Date().toTimeString())
             if (platform === 'ubuntu') {
                 yield exec_1.exec('/bin/bash', ['-c', 'whoami']);
-                yield exec_1.exec('/bin/bash', ['-c', 'apt-get install lib32z1 lib32ncurses5 libbz2-1.0:i386 libstdc++6:i386 g++ openjdk-8-jdk']);
-                core.exportVariable('JAVA_HOME', '/usr/lib/jvm/java-8-openjdk-amd64');
+                yield exec_1.exec('/bin/bash', ['-c', 'sudo npm install -g nativescript']);
+                yield exec_1.exec('/bin/bash', ['-c', 'npm install']);
+                yield exec_1.exec('/bin/bash', ['-c', 'tns doctor']);
             }
             else if (platform === 'macos') {
-                throw 'platform macos WIP';
+                throw Error('platform macos WIP');
             }
             else {
-                throw 'platform ${platform} not allowed. Only "ubutnu" or "macos" are supported';
+                throw Error(`platform ${platform} not allowed. Only "ubuntu" or "macos" are supported`);
             }
-            core.setOutput('success', '1');
+            core.setOutput('success', '0');
         }
         catch (error) {
             core.setFailed(error.message);
