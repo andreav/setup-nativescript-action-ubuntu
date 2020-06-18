@@ -14,9 +14,11 @@ async function run(): Promise<void> {
     if (platform === 'ubuntu') {
       await exec('/bin/bash', ['-c', 'whoami'])
 
-      await exec('/bin/bash', ['-c', 'apt-get install lib32z1 lib32ncurses5 libbz2-1.0:i386 libstdc++6:i386 g++ openjdk-8-jdk'])
-
-      core.exportVariable('JAVA_HOME', '/usr/lib/jvm/java-8-openjdk-amd64')
+      await exec('/bin/bash', ['-c', 'sudo npm install -g nativescript'])
+      
+      await exec('/bin/bash', ['-c', 'npm install'])
+      
+      await exec('/bin/bash', ['-c', 'tns doctor'])
 
     } else if (platform === 'macos') {
       throw 'platform macos WIP'
