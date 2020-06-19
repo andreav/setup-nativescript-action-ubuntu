@@ -26,6 +26,8 @@ async function run(): Promise<void> {
 
       await exec('/bin/bash', ['-c', 'npm install'])
 
+      await exec('/bin/bash', ['-c', 'pip install six'])
+
       await exec('/bin/bash', ['-c', 'tns doctor'])
     } else {
       throw Error(
