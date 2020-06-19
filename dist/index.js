@@ -1001,7 +1001,10 @@ function run() {
                 yield exec_1.exec('/bin/bash', ['-c', 'tns doctor']);
             }
             else if (platform === 'macos') {
-                throw Error('platform macos WIP');
+                yield exec_1.exec('/bin/bash', ['-c', 'whoami']);
+                yield exec_1.exec('/bin/bash', ['-c', 'sudo npm install -g nativescript']);
+                yield exec_1.exec('/bin/bash', ['-c', 'npm install']);
+                yield exec_1.exec('/bin/bash', ['-c', 'tns doctor']);
             }
             else {
                 throw Error(`platform ${platform} not allowed. Only "ubuntu" or "macos" are supported`);
