@@ -1004,6 +1004,7 @@ function run() {
                 yield exec_1.exec('/bin/bash', ['-c', 'whoami']);
                 yield exec_1.exec('/bin/bash', ['-c', 'sudo npm install -g nativescript']);
                 yield exec_1.exec('/bin/bash', ['-c', 'npm install']);
+                yield exec_1.exec('/bin/bash', ['-c', 'pip install six']);
                 yield exec_1.exec('/bin/bash', ['-c', 'tns doctor']);
             }
             else {
